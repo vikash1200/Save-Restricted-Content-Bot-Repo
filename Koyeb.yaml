@@ -1,0 +1,28 @@
+name: save-restricted-content-bot
+description: Telegram bot to save restricted content
+regions:
+  - eu-west-1
+services:
+  - name: bot-service
+    type: worker  # Use "worker" if it's a bot, change to "web" if it's a web service
+    env:
+      - key: API_HASH
+        value: ${API_HASH}
+      - key: API_ID
+        value: ${API_ID}
+      - key: BOT_TOKEN
+        value: ${BOT_TOKEN}
+      - key: DATABASE_HOST
+        value: ${DATABASE_HOST}
+      - key: DATABASE_USER
+        value: ${DATABASE_USER}
+      - key: DATABASE_PASSWORD
+        value: ${DATABASE_PASSWORD}
+      - key: DATABASE_NAME
+        value: ${DATABASE_NAME}
+    buildpacks:
+      - url: heroku/python
+      - url: https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+    docker:
+      image: your-docker-image  # Replace with your Docker image if using an external registry
+      cmd: ["bash", "bash.sh"]
