@@ -20,6 +20,10 @@ services:
         value: ${DATABASE_PASSWORD}
       - key: DATABASE_NAME
         value: ${DATABASE_NAME}
+    ports:
+      - port: 8000
+        protocol: http
+        public: true
     buildpacks:
       - url: heroku/python
       - url: https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
