@@ -23,14 +23,28 @@ logging.getLogger("telethon").setLevel(logging.WARNING)
 
 #to get width, height and duration(in sec) of a video
 def video_metadata(file):
-    vcap = cv2.VideoCapture(f'{file}')
-    width = round(vcap.get(cv2.CAP_PROP_FRAME_WIDTH ))
-    height = round(vcap.get(cv2.CAP_PROP_FRAME_HEIGHT ))
-    fps = vcap.get(cv2.CAP_PROP_FPS)
-    frame_count = vcap.get(cv2.CAP_PROP_FRAME_COUNT)
-    duration = round(frame_count / fps)
-    return {'width' : width, 'height' : height, 'duration' : duration }
+    try:
+        vcap = cv2.VideoCapture(file)
+        if not vcap.isOpened():
+            return {'width': 1, 'height': 1, 'duration': 1}  # Default values to avoid division by zero
 
+        width = round(vcap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        height = round(vcap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        fps = vcap.get(cv2.CAP_PROP_FPS)
+        frame_count = vcap.get(cv2.CAP_PROP_FRAME_COUNT)
+
+        if fps == 0:
+            duration = 1  # Default to 1 second to avoid division by zero
+        else:
+            duration = round(frame_count / fps)
+
+        vcap.release()
+        return {'width': width, 'height': height, 'duration': duration}
+
+    except Exception as e:
+        print(f"Error in video_metadata: {e}")
+        return {'width': 1, 'height': 1, 'duration': 1}  # Return defaults in case of any exception
+      
 #Join private chat-------------------------------------------------------------------------------------------------------------
 
 async def join(client, invite_link):

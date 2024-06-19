@@ -1,13 +1,19 @@
 <h1 align="center">
-  <b>Save restricted Content Bot by <a href="https://devgagan.in"> devgagan.in </a>
+  <b>Save restricted Content Bot by <a href="https://devgagan.in"> devgagan </a> | Enterprise Release June 2024.
 </h1> 
-
+    
 Contact: [Telegram](https://t.me/devggn)
+
+---
+
+## ENTERPRISE RELEASE INFO
+
+**Update**: This bot is updated with login functionalities, custom rename tag adding, log group, caption changing and and many more scroll down to last to see the latest update i.e. on 18 June 2024.
 
 ## Try Live Bot
 Bot link -https://t.me/advance_content_saver_bot
-
-### A stable telegram bot to get restricted messages with custom thumbnail support , made by [TEAM SPY](https://t.me/devggn) This bot can run in channels directly (in this case custom thumbnail not supported)
+---
+### A stable telegram bot to get restricted messages with custom thumbnail support , made by [TEAM SPY](https://t.me/devggn) This bot can run in channels directly.
 
 - works for both public and private chats
 - Custom thumbnail support for Pvt medias
@@ -19,7 +25,7 @@ Bot link -https://t.me/advance_content_saver_bot
 - `/cancel` -  Use this to stop batch
 - Time delay is added to avoid FloodWait and keep user account safe.
 - `/setchat` directly upload in channel or group
-# Variables
+## Variables
 
 - `API_ID`
 - `API_HASH`
@@ -28,13 +34,13 @@ Bot link -https://t.me/advance_content_saver_bot
 - `AUTH` - Owner user id
 - `FORCESUB` - Public channel username without '@'. Don't forget to add bot in channel as administrator. 
 
-# Get API & PYROGRAM:
+## Get API & PYROGRAM:
  
 API: [Telegram.org](https://my.telegram.org/auth)
 
 PYROGRAM SESSION: Search for it ... Make sure the source be trusted otherwise it will lead to accound delete or ban
 
-# How to get vars - [TEAM SPY](https://t.me/devggn)
+## How to get vars - [TEAM SPY](https://t.me/devggn)
 
 BOT TOKEN: @Botfather on telegram
 
@@ -42,12 +48,12 @@ AUTH: Go to @missrose_bot, start and send /info to get your id
 
 FORCESUB: Before starting building bots create a public channel and get the username withou '@'
 
-# Deploying Guide - [TEAM SPY](https://t.me/devggn)
+## Deploying Guide - [TEAM SPY](https://t.me/devggn)
 
-## Deploy on `VPS`
+### Deploy on `VPS`
 
 Easy Method:
-
+- Fork repo
 - Go to main then edit ```__init__.py``` as below
 - Place `#` before every `config` and after `=` write your vars in single inverted comma. see example below
 
@@ -61,6 +67,11 @@ FORCESUB = "channel username without @" #config("FORCESUB", default=None)
 AUTH = "1234567" #config("AUTH", default=None)
 
 ```
+EDIT `main/plugins/config.py` file and fill some variables there also
+1) MONGO_DB
+2) OWNER_ID
+3) LOG_GROUP ID with -100 after `=`
+
 - Now run following commands one by one...
 
 ```
@@ -81,15 +92,15 @@ python3 -m main
 
 » Method - 1:
 - Star the repo, and fork it in desktop mode
-- Go to settings of your forked repo
-- Rename your repo by any other name
+- Fill values in `main/plugins/config.py` as guided. 
 - Click on  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
  
 » Method - 2:
 - Star the repo, rate and fork it in desktop mode
 - create app in heroku
 - go to settings of ```app›› config vars››``` add all variables
-- add buildpacks
+- add buildpacks i.e. `python` and `https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git`
+- edit `main/plugins/config.py` file and fill you values there
 - connect to github and deploy
 - turn on dynos
 - Note: you must add buildpack in heroku to get the original video thumbnail and to remove already set thumbnail otherwise you will get black video
@@ -99,7 +110,7 @@ python3 -m main
 - now paste following link i.e `https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git` in input bar and click add buildpack
 - Now go back and redeploy
 
-# Editing Repo - [TEAM SPY](https://t.me/devggn)
+## Editing Repo - [TEAM SPY](https://t.me/devggn)
 
 You can freely edit repo the customisation you can do is -
 - Change command pattern like `/batch` to other name (edit this in ```main/plugins/batch.py```) by searching and replacing `/batch` to desired command.
@@ -113,31 +124,67 @@ change accordingly within ```f""```
 - Change Default thumbnail in main directory there is file named ```thumb.jpg``` remove that and upload your custom ```thumb.jpg```
 - Change cancel command (edit this also in ```batch.py```) search for ```/cancel``` and then change the command accordingly
 
-# Commands Available in Bot - [TEAM SPY](https://t.me/devggn)
-
-- ```/start``` - to start the bot
-- ```/batch``` - to download the files in range/bulk by giving one post link and range value
-- ```/cancel``` - to cancel the onging /batch task
-- ```/stats``` - to viewing the statics of bot
-- ```/speedtest``` - can be executed by owner only
-- ```/setchat``` - Set forwarding to a channel/group via channel/group ID including -100
-
-# Terms of USE / Modification 
+## Terms of USE / Modification 
 Visit [Terms](https://github.com/devgaganin/Save-Restricted-Content-Bot-Repo/blob/main/TERMS_OF_USE.md) and accept the guidelines.
 
 # Updates
 
-## Update: 6th June 2024
-- Fixed Peer ID Invalid Error
-- Removed `invalid` command handler as it is not needed anymore
-- Added `speedboost.py` (dem)
-## Update: 28th May 2024
-- in `batch.py`, `.json` method implemented for saving batch details on `/batch` command. 
-- `cancel` command fixed to clear the batch details and stop further processing.
-- `/dl` command added to download videos from `youtube`, `pinterest`, `linkedin`, `internet archive`, `amazon mini tv`, `xvi..deos`, `xn..xx` sites.
-- `set` and `remt` callback handlers removed now you have to send pic directly to set it as thumbnail and `/remthumb` to remove to thumbnail.
-- `/logs` command added to get the logs directly on telegram (now upto 2 min you can increase it accordingly)
-- `/help` command added
-- Private topic groups are now supported, single link (for batch processing modify code by yourself)
-- fixed peer id invalid error for some channel which do not support `-100` as prefix, use `/invalid` command to deal with this error (not fully resolved yet)
-- Contact us on Telegram and request new changes and report bugs.
+## Update: 18 June 2024
+
+This release introduces enterprise-level features with advanced authentication logic, empowering users with the `/auth` and `/unauth` commands.
+
+### New Features
+
+- **Login Functionality**: User can add their session via `/addsession SESSION` command to extract without links.
+- **Custom Rename**: Set custom filenames using the `/setrename` command.
+- **Custom Caption**: Define personalized captions with the `/setcaption` command.
+- **Delete Functionality**: Remove unwanted words from filenames and captions via the `/delete` command.
+- **Word Replacer**: Replace specific words in captions using the `/replace 'OLD_WORD', 'NEW_WORD'` command.
+- **Broadcast**: Send messages to all users using the `/broadcast MESSAGE` command.
+- **Batch Processing**: Two modes available, `/bulk` and `/batch`, for efficient batch operations.
+- **User Bot Login**: The `pro` method allows saving restricted pictures from DMs or bots.
+- **Multiple Hosting**: The `/host` method allows to host many bot in a single process.
+
+&&&&& and many more have a look below 
+
+### Available Commands
+
+You can copy and paste the following commands into @BotFather:
+
+```plaintext
+start - ✅ Check if I am alive!
+bulk - ☠ V1 batch method
+batch - 😎 V2 batch method
+dl - 🎞 Download videos from YouTube, Xsite, Instagram, Amazon Mini TV, Pinterest, LinkedIn, Internet Archive, etc. /dl <link>
+auth - authorize users
+unauth - revoke access
+broadcast - send message to bot users
+addsession - 🔗 Add your own session to extract without an invite link
+set - 👉 Basic settings
+remthumb - ❌ Remove saved thumbnail
+setchat - 📡 For channel or group forwarding
+setcaption - 🖊️ Set your custom caption (Pro plan)
+setrename - 🔄 Add text and rename file (Pro plan)
+replace - 🖋️ Replace words in captions
+delete - 🥳 Prevent a word from appearing in filenames and captions
+plan - 💰 Learn about premium plan details
+terms - 📋 View the bot's terms and conditions
+stats - 📊 Check the statistics
+speedtest - 🔴 Check speed (Only for sudo users)
+logout - 🚪 Delete session and logout
+get - 🙃 Get a list of current users
+list - 🍏 List authorized users
+lock - ⚡ Add channels to the protected list to prevent extraction
+pro - 💎 Add session to save restricted files from private chats/bots
+noob - 😭 Delete the Pro activation
+host - ☁️ Host your own SRC Bot
+unhost - 🌨️ Unhost the SRC and FWD Bot
+help - 😧 Get command help
+cancel - ❌ Cancel ongoing process
+```
+
+---
+
+## Important Note
+
+**Note**: Changing the terms and commands doesn't magically make you a developer. Real development involves understanding the code, writing new functionalities, and debugging issues, not just renaming things. If only it were that easy!
